@@ -7,13 +7,29 @@ import FormPreceptoria from './components/FormPreceptoria.jsx'
 import ProfileCard from './components/ProfileCard.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [profile, setProfile] = useState(null)
+
+  const updateProfile = () => {
+    setProfile({
+      photo: viteLogo,
+      name: 'Jane Smith',
+      detail1: 'New Detail 1',
+      detail2: 'New Detail 2',
+      detail3: 'New Detail 3',
+      detail4: 'New Detail 4'
+    })
+  }
 
   return (
     <>
       <NavBar />
-      <FormPreceptoria />
-      <ProfileCard />
+      <button onClick={updateProfile}>Update Profile</button>
+      <div className={`container ${profile ? 'with-profile' : ''}`}>
+        <div className="content">
+          <FormPreceptoria />
+          {profile && <ProfileCard profile={profile} />}
+        </div>
+      </div>
     </>
   )
 }

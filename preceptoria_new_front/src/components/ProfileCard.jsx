@@ -1,21 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './ProfileCard.css'
 
-function ProfileCard() {
-  const [profile, setProfile] = useState(null)
-
-  useEffect(() => {
-    // Fetch profile data from API
-    fetch('/api/profile')
-      .then(response => response.json())
-      .then(data => setProfile(data))
-  }, [])
-
-  if (!profile) {
-    return null
-  // You can return a loading state here if needed
-  }
-
+function ProfileCard({ profile }) {
   return (
     <div className="profile-card">
       <img src={profile.photo} alt="Profile" className="profile-photo" />
