@@ -25,7 +25,7 @@ function App() {
       <NavBar />
       <button onClick={updateProfile}>Update Profile</button>
       <div className={`container ${profile ? 'with-profile' : ''}`}>
-        <div className="content">
+        <div className="content" style={{ display: 'flex'}}>
           <FormPreceptoria />
           {profile && <ProfileCard profile={profile} />}
         </div>
