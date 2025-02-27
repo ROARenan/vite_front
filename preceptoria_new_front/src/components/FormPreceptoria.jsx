@@ -14,12 +14,16 @@ function FormPreceptoria() {
     fetch('/api/turmas')
       .then(response => response.json())
       .then(data => setTurmas(data))
-
-    // Fetch alunos from API
-    fetch('/api/alunos')
-      .then(response => response.json())
-      .then(data => setAlunos(data))
   }, [])
+
+  useEffect(() => {
+    if (validateEmail(email)) {
+      // Fetch alunos from API based on email
+      fetch(`/api/alunos?email=${email}`)
+        .then(response => response.json())
+        .then(data => setAlunos(data))
+    }
+  }, [email])
 
   const handleSubmit = (e) => {
     e.preventDefault()
